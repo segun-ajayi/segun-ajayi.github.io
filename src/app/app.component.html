@@ -33,11 +33,7 @@
       </a>
     </nav>
 
-    <div class="social">
-      <a *ngFor="let item of social.data" href="{{ item.url }}" target="_blank" class="{{ item.icon }}">
-        <i class="fa fa-{{ item.icon }}"></i>
-      </a>
-    </div>
+
     <div class="copyright" style="margin-top: 30px"> © {{ introduction.short_name | titlecase }}.<br>
       All Rights Reserved. </div>
   </aside>
@@ -48,13 +44,19 @@
 
       <!-- Introduction -->
       <article class="content introduction noscroll" id="chapterintroduction">
-        <div class="inner">
+        <div class="inner" style="color: #f6f7f8;">
           <h2><span>HEllo, I'm</span><br>
             {{ introduction.name | uppercase }}</h2>
           <span class="title">{{ introduction.title }}</span> </div>
-        <div id="owl-demo" class="owl-carousel">
-          <div *ngFor="let item of introduction.images" class="item"><img src="{{ server + item.url }}" alt="" /></div>
-        </div>
+        <owl-carousel-o [options]="customOptions">
+
+          <ng-container *ngFor="let slide of introduction.images">
+            <ng-template carouselSlide >
+              <img [src]="server + slide.url" >
+            </ng-template>
+          </ng-container>
+
+        </owl-carousel-o>
       </article>
 
       <!-- About -->
@@ -78,78 +80,32 @@
       </article>
 
       <!-- Skills -->
-      <article class="content skills gray-bg" id="chapterskills">
+      <article class="content experience gray-bg" id="chapterskills">
         <div class="inner">
           <h2>Skills</h2>
           <div class="title-divider"></div>
           <h3>My Skills</h3>
 <!--          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>-->
-          <div class="skills-con">
-            <div class="container-sub margin-top50">
-              <div class="row">
-                <div *ngFor="let item of skill.data" class="col-6 margin-bottom50">
-                  <div class="col-6"><span class="chart">
-<!--                                           data-percent="{{ item.percent }}"-->
-                  <span class="percent"></span> </span></div>
-                  <div class="col-6 chart-text">
-                    <h4>{{ item.name }}</h4>
-                    <p>{{ item.age }} years</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="full-divider"></div>
-            <div class="container-sub skill-list">
-              <div class="row">
-                <h3>Knowledge</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
-                <div class="col-4 margin-top10">
-                  <ul>
-                    <li>Google Analythics & SEO</li>
-                    <li>Instal and Configure</li>
-                    <li>E-commerce Platform</li>
-                    <li>Color theory knowledge</li>
-                  </ul>
-                </div>
-                <div class="col-4 margin-top10">
-                  <ul>
-                    <li>Photo manipulation skills</li>
-                    <li>Digital Painting</li>
-                    <li>Photo Composition</li>
-                    <li>Good sense of Tipography</li>
-                  </ul>
-                </div>
-                <div class="col-4 margin-top10">
-                  <ul>
-                    <li>Web Usability</li>
-                    <li>Grid & Layout</li>
-                    <li>Portrait Retouching</li>
-                    <li>Video Editing</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="full-divider"></div>
+          <div class="experience-con">
             <div class="container-sub">
+              <div class="full-divider"></div>
               <div class="row">
-                <h3>Language Skills</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
-                <div class="progressbar-main margin-top50">
-                  <div class="progress-bar-description">English</div>
-                  <div id="progressBar" class="progress">
-                    <div class="progress-value"></div>
+                <div *ngFor="let item of skill.data; let last = last">
+                  <div class="experience-details">
+                    <div class="col-6 margin-bottom50 margin-top50">
+                      <div class="col-3 icon-block"><i class="fa fa-code"></i></div>
+                      <div class="flot-left">
+                        <h5>{{ item.name }}</h5>
+                        <span>{{ item.age + ' years experience' }}</span> </div>
+                    </div>
                   </div>
-                </div>
-                <div class="progressbar-main margin-top40">
-                  <div class="progress-bar-description">Yoruba</div>
-                  <div id="progressBar2" class="progress">
-                    <div class="progress-value"></div>
-                  </div>
+                  <div *ngIf="!last" class="full-divider"></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
+          </div>
       </article>
 
       <!-- Experience -->
@@ -163,7 +119,6 @@
             <div class="container-sub">
               <div class="full-divider"></div>
               <div class="row">
-
                 <div *ngFor="let item of experience.data; let last = last">
                   <div class="experience-details">
                     <div class="col-6 margin-bottom50 margin-top50">
@@ -177,7 +132,6 @@
                   </div>
                   <div *ngIf="!last" class="full-divider"></div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -214,7 +168,7 @@
         </div>
       </article>
 
-      <!-- Pportfolio -->
+      <!-- Portfolio -->
       <article class="content portfolio white-bg" id="chapterportfolio">
         <div class="inner">
           <h2>Portfolio</h2>
@@ -228,13 +182,15 @@
                   <section class="grid-wrap">
                     <ul class="grid">
                       <li *ngFor="let item of portfolio.data">
-                        <figure> <img src="{{ server + item.images[0].url }}" alt=""/>
-                          <figcaption>
-                            <div class="figcaption-details"> <img src="{{ serve + 'assets/images/icon-plus.png' }}" height="82" width="82" alt="" />
-                              <h3>{{ item.title }}</h3>
-                              <span>{{ item.description }}</span> </div>
-                          </figcaption>
-                        </figure>
+                        <a href="{{ item.url }}" target="_blank">
+                          <figure> <img src="{{ server + item.images[0].url }}" alt=""/>
+                            <figcaption>
+                              <div class="figcaption-details"> <img src="assets/images/icon-plus.png" height="82" width="82" alt="" />
+                                <h3>{{ item.title }}</h3>
+                                <span>{{ item.description }}</span> </div>
+                            </figcaption>
+                          </figure>
+                        </a>
                       </li>
                     </ul>
                   </section>
@@ -329,7 +285,7 @@
       <article class="content introduction-end" id="chapterthankyou">
         <div class="inner">
           <div class="introduction-end-con margin-top50">
-            <h3><strong>Andrew Smith</strong></h3>
+            <h3><strong>{{ introduction.short_name }}</strong></h3>
             <div id="rotate" class="rotate">
               <div><span>awesome.</span></div>
               <div><span>invincible.</span></div>

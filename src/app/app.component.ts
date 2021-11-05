@@ -11,6 +11,7 @@ import {SocialCollection} from './Interface/social-collection';
 import {environment} from '../environments/environment';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IreturnData} from './Interface/ireturn-data';
+import {OwlOptions} from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,17 @@ export class AppComponent implements OnInit {
   serve: string = environment.server;
   loading: boolean;
   mess: string;
+  customOptions: OwlOptions = {
+    loop: true,
+    items: 1,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 600,
+    navText: ['&#8249', '&#8250;'],
+    nav: true
+  };
   constructor(private fetch: FetchServiceService, private fb: FormBuilder) {
   }
 

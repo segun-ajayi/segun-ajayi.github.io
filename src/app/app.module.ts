@@ -13,6 +13,9 @@ import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { ContactComponent } from './Components/contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
