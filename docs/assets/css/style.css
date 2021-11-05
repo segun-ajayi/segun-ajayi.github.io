@@ -8,12 +8,12 @@
 ----------------------------------
 
         Table of Contents
-        
+
         #Reset
         #Typography
         #Base Grid
-        #Left Side 
-        #Content Area 
+        #Left Side
+        #Content Area
         #Introduction Screen
         #About Screen
         #Skills Screen
@@ -47,7 +47,7 @@ body {
 }
 body.blog {
     overflow-y: scroll;
-    overflow-x: auto;   
+    overflow-x: auto;
 }
 a {
     color: #bbb2c2;
@@ -362,7 +362,7 @@ h5 {
     margin-right: 30px;
 }
 /* ==========================================================================
-   #Left Side 
+   #Left Side
    ========================================================================== */
 
 .logo {
@@ -430,31 +430,7 @@ h5 {
 .menu-link {
     display: none
 }
-.social {
-    padding: 30px;
-    position: absolute;
-    top: 619px;
-}
-.social a {
-    font-size: 20px;
-    transition-duration: .2s;
-    -moz-transition-duration: .2s;
-    -webkit-transition-duration: .2s;
-    -o-transition-duration: .2s;
-}
-.social a:hover {
-    color: #fff;
-}
-.social .facebook {
-    color: #5a7eca
-}
-.social .twitter {
-    color: #03acf1;
-    margin: 0 26px 0 30px
-}
-.social .google-plus {
-    color: #df4a32
-}
+
 .copyright {
     position: absolute;
     bottom: 5px;
@@ -467,7 +443,7 @@ h5 {
     letter-spacing: 1px
 }
 /* ==========================================================================
-   #Content Area 
+   #Content Area
    ========================================================================== */
 
 .content-scroller {

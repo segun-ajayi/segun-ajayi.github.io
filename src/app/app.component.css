@@ -1,0 +1,25 @@
+.social {
+  padding: 30px;
+  position: absolute;
+  top: 619px;
+}
+.social a {
+  font-size: 20px;
+  transition-duration: .2s;
+  -moz-transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  -o-transition-duration: .2s;
+}
+.social a:hover {
+  color: #fff;
+}
+.social .facebook {
+  color: #5a7eca
+}
+.social .twitter {
+  color: #03acf1;
+  margin: 0 26px 0 30px
+}
+.social .google-plus {
+  color: #df4a32
+}
