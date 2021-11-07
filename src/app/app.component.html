@@ -5,9 +5,9 @@
       <!-- Logo image-->
       <img src="assets/images/logo.png" width="140" height="140" alt=""/>
       <!-- Logo name-->
-      <span>Oluwasegun Ajayi</span></div>
+      <span>{{ introduction.name }}</span></div>
     <!-- Mobile Navigation-->
-    <a href="#menu1" class="menu-link"></a>
+    <a (click)="mobile()" class="menu-link"></a>
     <!-- Left Navigation-->
     <nav id="menu1" role="navigation">
       <a href="#chapterintroduction">
@@ -32,9 +32,7 @@
         <span id="link_contact">Contact</span>
       </a>
     </nav>
-
-
-    <div class="copyright" style="margin-top: 30px"> © {{ introduction.short_name | titlecase }}.<br>
+    <div class="copyright" > © {{ introduction.name | titlecase }}.<br>
       All Rights Reserved. </div>
   </aside>
   <!-- Go to top link for mobile device -->
@@ -67,7 +65,7 @@
           <div class="about-con">
             <ul>
               <li>Name: {{ introduction.name | titlecase }}</li>
-              <li>Email: <a href="mailto:andrew@gmail.com">{{ about.email | lowercase }}</a></li>
+              <li>Email: <a href="mailto:{{ about.email | lowercase }}">{{ about.email | lowercase }}</a></li>
               <li>Phone: {{ about.phone }}</li>
               <li>Address: {{ about.address }}</li>
               <li>Nationality: {{ about.nationality }}</li>
@@ -250,7 +248,7 @@
                         <a href="mailto:{{ about.email }}">{{ about.email }}</a> </div>
                     </div>
                   </div>
-                  <div class="col-6 m-margin-top30" style="padding-lext: 10px">
+                  <div class="col-6 m-margin-top30" >
                     <h3>I'm also on Social Networks</h3>
 <!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor.-->
                     <div class="contact-social margin-top30">

@@ -81,4 +81,7 @@ export class AppComponent implements OnInit {
           this.mess = 'Something went wrong, please try again';
         });
   }
+  mobile() {
+    return;
+  }
 }
