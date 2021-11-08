@@ -78,32 +78,55 @@
       </article>
 
       <!-- Skills -->
-      <article class="content experience gray-bg" id="chapterskills">
+<!--      <article class="content experience gray-bg" id="chapterskills">-->
+<!--        <div class="inner">-->
+<!--          <h2>Skills</h2>-->
+<!--          <div class="title-divider"></div>-->
+<!--          <h3>My Skills</h3>-->
+<!--&lt;!&ndash;          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>&ndash;&gt;-->
+<!--          <div class="experience-con">-->
+<!--            <div class="container-sub">-->
+<!--              <div class="full-divider"></div>-->
+<!--              <div class="row">-->
+<!--                <div *ngFor="let item of skill.data; let last = last">-->
+<!--                  <div class="experience-details">-->
+<!--                    <div class="col-6 margin-bottom50 margin-top50">-->
+<!--                      <div class="col-3 icon-block"><i class="fa fa-code"></i></div>-->
+<!--                      <div class="flot-left">-->
+<!--                        <h5>{{ item.name }}</h5>-->
+<!--                        <span>{{ item.age + ' years experience' }}</span> </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div *ngIf="!last" class="full-divider"></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          </div>-->
+<!--      </article>-->
+
+      <article class="content skills gray-bg" id="chapterskills">
         <div class="inner">
           <h2>Skills</h2>
           <div class="title-divider"></div>
           <h3>My Skills</h3>
 <!--          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>-->
-          <div class="experience-con">
-            <div class="container-sub">
-              <div class="full-divider"></div>
+          <div class="skills-con">
+            <div class="container-sub margin-top50">
               <div class="row">
-                <div *ngFor="let item of skill.data; let last = last">
-                  <div class="experience-details">
-                    <div class="col-6 margin-bottom50 margin-top50">
-                      <div class="col-3 icon-block"><i class="fa fa-code"></i></div>
-                      <div class="flot-left">
-                        <h5>{{ item.name }}</h5>
-                        <span>{{ item.age + ' years experience' }}</span> </div>
-                    </div>
+                <div *ngFor="let item of skill.data" class="col-6 margin-bottom50">
+                  <div class="col-6"><span class="chart" data-percent="56"><span class="percent">{{ item.percent }}</span> </span></div>
+                  <div class="col-6 chart-text">
+                    <h4>{{ item.name }}</h4>
+                    <p>{{ item.age + ' years experience' }}</p>
                   </div>
-                  <div *ngIf="!last" class="full-divider"></div>
+                  <div class="full-divider"></div>
                 </div>
               </div>
             </div>
           </div>
-
-          </div>
+        </div>
       </article>
 
       <!-- Experience -->
@@ -267,10 +290,14 @@
                   <h3>Drop Me a Line</h3>
                   <form id="form1" [formGroup]="contactForm" (ngSubmit)="send(contactForm.value)" >
                     <input name="name" formControlName="name" type="text" id="name" placeholder="Your Name..." />
+                    <div class="errormsg" >{{ n }}</div>
                     <input name="email" formControlName="email" type="text" id="email" placeholder="Your Email..." />
+                    <div class="errormsg" >{{ e }}</div>
                     <textarea name="message" formControlName="message" id="message" cols="45" rows="5" placeholder="Your Message..."></textarea>
+                    <div class="errormsg" >{{ m }}</div>
                     <input type="submit" [disabled]="!contactForm.valid || loading" id="" value="say hello!" >
-                    <div id="successmsg" ></div>
+                    <div *ngIf="mess" id="successmsg" >Thank you for the message, I will contact you soon.</div>
+                    <div *ngIf="emess" class="errormsg" >Something went wrong, please try again</div>
                   </form>
                 </div>
               </div>

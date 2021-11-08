@@ -31,7 +31,12 @@ export class AppComponent implements OnInit {
   server: string = environment.serverStorage;
   serve: string = environment.server;
   loading: boolean;
-  mess: string;
+  mess: boolean;
+  emess: boolean;
+  err: object;
+  n: string;
+  e: string;
+  m: string;
   customOptions: OwlOptions = {
     loop: true,
     items: 1,
@@ -60,26 +65,47 @@ export class AppComponent implements OnInit {
   }
   createForm() {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required]],
+      // name: ['', [Validators.required]],
+      // email: ['', [Validators.required, Validators.email]],
+      // message: ['', [Validators.required]],
+      name: [''],
+      email: [''],
+      message: [''],
     });
   }
   send(values) {
     this.loading = true;
+    this.mess = false;
+    this.emess = false;
+    this.n = '';
+    this.e = '';
+    this.m = '';
     this.fetch.sendEmail(values)
       .subscribe((data: IreturnData) => {
           if (data.status === 200) {
-            this.contactForm.reset();
+              this.mess = true;
+              this.contactForm.reset();
+              setInterval(this.clearMess, 5000);
           } else {
-            this.mess = 'Something went wrong, please try again';
+            if (data.success === 'validation') {
+              const err = data.error;
+              this.n = err.name[0];
+              this.e = err.email[0];
+              this.m = err.message[0];
+            }
+            setInterval(this.clearMess, 5000);
           }
           this.loading = false;
         },
         err => {
           this.loading = false;
-          this.mess = 'Something went wrong, please try again';
+          this.emess = true;
+          setInterval(this.clearMess, 5000, 0);
         });
+  }
+  clearMess() {
+    this.mess = false;
+    this.emess = false;
   }
   mobile() {
     return;

@@ -23,3 +23,8 @@
 .social .google-plus {
   color: #df4a32
 }
+
+.ng-invalid:not(form)  {
+  border: 1px solid #dc0505 !important;
+}
+

@@ -158,6 +158,10 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     margin-top: 10px;
     color: #add93c;
 }
+.errormsg {
+    margin-top: 10px;
+    color: #d94e3c;
+}
 /* ==========================================================================
    #Typography
    ========================================================================== */

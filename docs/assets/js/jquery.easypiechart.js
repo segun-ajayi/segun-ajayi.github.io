@@ -1,5 +1,5 @@
 (function(root, factory) {
-	"use strict"; 
+	"use strict";
     if(typeof exports === 'object') {
         module.exports = factory(require('jquery'));
     }
@@ -121,7 +121,7 @@ var CanvasRenderer = function(el, options) {
   this.getCanvas = function() {
     return canvas;
   };
-  
+
   /**
     * Canvas 2D context 'ctx' accessor
    */
@@ -209,7 +209,7 @@ var EasyPieChart = function(el, opts) {
 			duration: 1000,
 			enabled: true
 		},
-		easing: function (x, t, b, c, d) { 
+		easing: function (x, t, b, c, d) {
 			t = t / (d/2);
 			if (t < 1) {
 				return c / 2 * t * t + b;
