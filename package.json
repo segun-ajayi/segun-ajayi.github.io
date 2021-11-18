@@ -23,6 +23,7 @@
     "@angular/service-worker": "~8.2.12",
     "angular2-chartjs": "^0.5.1",
     "easy-pie-chart": "^2.1.7",
+    "jquery": "^3.6.0",
     "ngx-owl-carousel-o": "~2.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

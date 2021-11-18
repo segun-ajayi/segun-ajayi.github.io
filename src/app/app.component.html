@@ -116,12 +116,11 @@
             <div class="container-sub margin-top50">
               <div class="row">
                 <div *ngFor="let item of skill.data" class="col-6 margin-bottom50">
-                  <div class="col-6"><span class="chart" data-percent="56"><span class="percent">{{ item.percent }}</span> </span></div>
+                  <div class="col-6"><span class="chart" [attr.data-percent]="item.percent"><span class="percent">{{ item.percent }}</span> </span></div>
                   <div class="col-6 chart-text">
                     <h4>{{ item.name }}</h4>
                     <p>{{ item.age + ' years experience' }}</p>
                   </div>
-                  <div class="full-divider"></div>
                 </div>
               </div>
             </div>

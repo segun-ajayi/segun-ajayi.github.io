@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FetchServiceService} from './Services/fetch-service.service';
 import {DataCollection} from './Interface/data-collection';
 import {Introduction} from './Interface/introduction';
@@ -13,12 +13,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IreturnData} from './Interface/ireturn-data';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 
+import * as $ from 'jquery';
+import '../assets/js/jquery.easypiechart';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   contactForm: FormGroup;
   title = 'portfolio';
   introduction: Introduction;
@@ -49,6 +52,14 @@ export class AppComponent implements OnInit {
     nav: true
   };
   constructor(private fetch: FetchServiceService, private fb: FormBuilder) {
+  }
+  ngAfterViewInit() {
+    $('.chart').easyPieChart({
+      easing: 'easeOutBounce',
+      onStep(from, to, percent) {
+        $(this.el).find('.percent').text(Math.round(percent));
+      }
+    });
   }
 
   ngOnInit() {
@@ -108,6 +119,7 @@ export class AppComponent implements OnInit {
     this.emess = false;
   }
   mobile() {
+    console.log('fffffff');
     return;
   }
 }
